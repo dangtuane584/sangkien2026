@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quy định kỷ luật </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:700px; margin:30px auto;}
+.grid-lessons {display:grid; grid-template-columns: 1fr; gap:10px;}
+.lesson-box {background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius:15px; padding:15px; cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.lesson-box:hover {transform: translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+.lesson-header {display:flex; align-items:center;}
+.lesson-number {font-size:1.2rem; font-weight:bold; margin-right:10px; width:25px; text-align:center;}
+.icon {font-size:2rem; margin-right:10px; color:#FF4500;}
+.lesson-title {font-weight:bold;}
+.lesson-content {display:none; margin-top:10px; padding:10px; background: rgba(255,255,255,0.8); border-radius:8px; line-height:1.5;}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:15px;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+@media(max-width:500px){.icon{font-size:1.5rem;} .lesson-number{font-size:1rem;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Quy định kỷ luật</h1>
+</header>
+
+<section>
+<a href="pho-bien-gdpl.html"><button>⏪ Quay lại</button></a>
+
+<div class="grid-lessons">
+
+  <div class="lesson-box" onclick="toggleContent(this, 1)">
+    <div class="lesson-header">
+      <div class="lesson-number">1</div>
+      <div class="icon">📘</div>
+      <div class="lesson-title">Nguyên tắc kỷ luật cơ bản</div>
+    </div>
+    <div class="lesson-content" id="content-1">
+      <p>Kỷ luật cơ bản là nền tảng giúp đơn vị vận hành trơn tru. Bao gồm:</p>
+      <ul>
+        <li>Tuân thủ mệnh lệnh từ cấp trên.</li>
+        <li>Tôn trọng đồng đội và phối hợp trong mọi nhiệm vụ.</li>
+        <li>Giữ trật tự trong nội bộ đơn vị.</li>
+        <li>Thực hiện đúng giờ giấc, trang phục và vệ sinh.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lesson-box" onclick="toggleContent(this, 2)">
+    <div class="lesson-header">
+      <div class="lesson-number">2</div>
+      <div class="icon">📗</div>
+      <div class="lesson-title">Nghiêm túc thực hiện mệnh lệnh</div>
+    </div>
+    <div class="lesson-content" id="content-2">
+      <p>Mỗi quân nhân phải nghiêm túc thực hiện mệnh lệnh:</p>
+      <ul>
+        <li>Không bỏ qua hay thay đổi mệnh lệnh.</li>
+        <li>Báo cáo khó khăn khi thực hiện mệnh lệnh.</li>
+        <li>Hiểu rõ mục tiêu và nội dung mệnh lệnh.</li>
+        <li>Phối hợp đồng đội để hoàn thành nhiệm vụ.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lesson-box" onclick="toggleContent(this, 3)">
+    <div class="lesson-header">
+      <div class="lesson-number">3</div>
+      <div class="icon">📕</div>
+      <div class="lesson-title">Kỷ luật nội bộ và tổ chức</div>
+    </div>
+    <div class="lesson-content" id="content-3">
+      <p>Kỷ luật nội bộ giúp đơn vị vận hành hiệu quả:</p>
+      <ul>
+        <li>Tuân thủ giờ giấc và trực ban.</li>
+        <li>Bảo quản vũ khí, trang thiết bị và tài sản chung.</li>
+        <li>Duy trì vệ sinh cá nhân và khuôn viên đơn vị.</li>
+        <li>Tôn trọng cấp trên và đồng đội.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lesson-box" onclick="toggleContent(this, 4)">
+    <div class="lesson-header">
+      <div class="lesson-number">4</div>
+      <div class="icon">📙</div>
+      <div class="lesson-title">Xử lý vi phạm kỷ luật</div>
+    </div>
+    <div class="lesson-content" id="content-4">
+      <p>Mọi vi phạm sẽ được xử lý nghiêm túc:</p>
+      <ul>
+        <li>Vi phạm nhỏ: nhắc nhở, cảnh cáo.</li>
+        <li>Vi phạm nghiêm trọng: lập biên bản và kỷ luật chính thức.</li>
+        <li>Xử lý công khai để mọi quân nhân nhận thức hậu quả.</li>
+        <li>Hỗ trợ cải thiện hành vi để tuân thủ tốt hơn.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lesson-box" onclick="toggleContent(this, 5)">
+    <div class="lesson-header">
+      <div class="lesson-number">5</div>
+      <div class="icon">📒</div>
+      <div class="lesson-title">Hình thức khen thưởng và kỷ luật</div>
+    </div>
+    <div class="lesson-content" id="content-5">
+      <p>Đơn vị áp dụng các hình thức khen thưởng và kỷ luật nhằm khuyến khích tinh thần tuân thủ:</p>
+      <ul>
+        <li>Khen thưởng: giấy khen, thưởng vật chất, công nhận thành tích.</li>
+        <li>Kỷ luật: nhắc nhở, cảnh cáo, hạ bậc, đình chỉ quyền lợi tùy mức độ.</li>
+        <li>Thực hiện minh bạch, công bằng và lưu hồ sơ.</li>
+        <li>Giáo dục quân nhân hiểu lý do và cải thiện hành vi.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<script>
+function toggleContent(box, num){
+  const content = box.querySelector(`#content-${num}`);
+  const isVisible = content.style.display === "block";
+  // Ẩn tất cả nội dung trước khi mở
+  document.querySelectorAll('.lesson-content').forEach(c => c.style.display = 'none');
+  // Nếu trước đó chưa mở, mở nội dung hiện tại
+  if(!isVisible){
+    content.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>

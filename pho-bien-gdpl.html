@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phổ biến GDPL</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background: #f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:900px; margin:30px auto;}
+.grid-lessons{display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom:20px;}
+.square-lesson{background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius: 15px; text-align: center; padding: 20px 5px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.square-lesson:hover{transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+.square-lesson .icon{font-size:2.5rem; margin-bottom: 10px;}
+.square-lesson p{font-weight: bold; margin-top:5px;}
+#lesson-content{background: rgba(255,255,255,0.6); padding:15px; border-radius:12px; min-height:100px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin:10px 0; font-size:0.9em; transition:0.3s;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+@media(max-width:800px){.grid-lessons{grid-template-columns: repeat(2, 1fr);}}
+@media(max-width:500px){.grid-lessons{grid-template-columns: 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Phổ biến GDPL</h1>
+</header>
+
+<section>
+<a href="noidung-hoc.html"><button>⏪ Quay lại</button></a>
+
+<!-- 8 mục -->
+<div class="grid-lessons">
+  <div class="square-lesson" onclick="window.open('hien-phap.html','_blank')">
+    <div class="icon">📜</div>
+    <p>Hiến pháp & pháp luật cơ bản</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('luat-quan-doi.html','_blank')">
+    <div class="icon">⚖️</div>
+    <p>Luật Quân đội</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('luat-an-ninh.html','_blank')">
+    <div class="icon">🛡️</div>
+    <p>Luật An ninh quốc gia</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('quy-dinh-ky-luat.html','_blank')">
+    <div class="icon">📋</div>
+    <p>Quy định kỷ luật</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('quyen-nghia-vu.html','_blank')">
+    <div class="icon">🧑‍✈️</div>
+    <p>Quyền & nghĩa vụ quân nhân</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('tinh-huong.html','_blank')">
+    <div class="icon">⚠️</div>
+    <p>Tình huống pháp luật</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('thanh-tra.html','_blank')">
+    <div class="icon">🔍</div>
+    <p>Thanh tra & kiểm tra</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('bao-cao.html','_blank')">
+    <div class="icon">📝</div>
+    <p>Báo cáo & tổng hợp</p>
+  </div>
+</div>
+
+
+<div id="lesson-content">
+<p>Chọn một mục để xem nội dung...</p>
+</div>
+
+</section>
+
+<script>
+const lessons = {
+  1: "Nắm vững Hiến pháp và pháp luật cơ bản, thực hiện quyền và nghĩa vụ của công dân.",
+  2: "Hiểu và tuân thủ Luật Quân đội, bảo đảm kỷ luật và trật tự trong đơn vị.",
+  3: "Nắm các quy định về An ninh quốc gia, bảo vệ Tổ quốc và thông tin nội bộ.",
+  4: "Thực hiện đúng các quy định kỷ luật, tránh vi phạm và xử lý kịp thời.",
+  5: "Hiểu quyền lợi và nghĩa vụ của quân nhân, thực hiện trách nhiệm cá nhân.",
+  6: "Phân tích tình huống pháp luật, đưa ra quyết định đúng và hợp pháp.",
+  7: "Hiểu về thanh tra, kiểm tra trong đơn vị và cách báo cáo vi phạm.",
+  8: "Biết cách lập báo cáo, tổng hợp dữ liệu và trình bày kết quả."
+};
+
+function showLesson(num){
+  document.getElementById('lesson-content').innerHTML = `<h3>Mục ${num}</h3><p>${lessons[num]}</p>`;
+}
+</script>
+
+</body>
+</html>

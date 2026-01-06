@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nắm quản lý tư tưởng </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background: #f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:900px; margin:30px auto;}
+.grid-lessons{display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom:20px;}
+.square-lesson{background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius: 15px; text-align: center; padding: 20px 5px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.square-lesson:hover{transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+.square-lesson .icon{font-size:2.5rem; margin-bottom: 10px;}
+.square-lesson p{font-weight: bold; margin-top:5px;}
+#lesson-content{background: rgba(255,255,255,0.6); padding:15px; border-radius:12px; min-height:100px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin-top:10px;}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin:10px 0; font-size:0.9em; transition:0.3s;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+h2 {color:#1e3c72; margin-bottom:10px;}
+h3 {color:#FF4500; margin-bottom:8px;}
+p, ul {margin-bottom:10px; line-height:1.6;}
+ul {margin-left:20px;}
+@media(max-width:800px){.grid-lessons{grid-template-columns: repeat(2, 1fr);}}
+@media(max-width:500px){.grid-lessons{grid-template-columns: 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Nắm quản lý tư tưởng </h1>
+</header>
+
+<section>
+<a href="noidung-hoc.html"><button>⏪ Quay lại</button></a>
+
+<div class="grid-lessons">
+  <div class="square-lesson" onclick="showLesson(1)"><div class="icon">🧠</div><p>1. Nắm tình hình tư tưởng</p></div>
+  <div class="square-lesson" onclick="showLesson(2)"><div class="icon">💬</div><p>2. Phản hồi tâm tư, nguyện vọng</p></div>
+  <div class="square-lesson" onclick="showLesson(3)"><div class="icon">📊</div><p>3. Lập báo cáo tư tưởng</p></div>
+  <div class="square-lesson" onclick="showLesson(4)"><div class="icon">📈</div><p>4. Đánh giá tinh thần và thái độ</p></div>
+  <div class="square-lesson" onclick="showLesson(5)"><div class="icon">📝</div><p>5. Kế hoạch cải thiện</p></div>
+  <div class="square-lesson" onclick="showLesson(6)"><div class="icon">🔍</div><p>6. Theo dõi hiệu quả biện pháp</p></div>
+  <div class="square-lesson" onclick="showLesson(7)"><div class="icon">📌</div><p>7. Báo cáo định kỳ</p></div>
+  <div class="square-lesson" onclick="showLesson(8)"><div class="icon">✅</div><p>8. Đánh giá tổng thể và rút kinh nghiệm</p></div>
+</div>
+
+<div id="lesson-content">
+<p>Chọn một mục để xem nội dung...</p>
+</div>
+
+</section>
+
+<script>
+const lessons = {
+  1: `<h3>1. Nắm tình hình tư tưởng</h3>
+  <ul>
+    <li>Theo dõi thái độ, tinh thần, động lực làm việc của quân nhân.</li>
+    <li>Nhận diện các khó khăn, áp lực, mâu thuẫn trong nội bộ.</li>
+    <li>Xác định nhu cầu, mong muốn, tâm tư từng quân nhân để có giải pháp phù hợp.</li>
+    <li>Kết hợp quan sát, trao đổi trực tiếp và thông tin từ cấp chỉ huy.</li>
+  </ul>`,
+
+  2: `<h3>2. Phản hồi tâm tư, nguyện vọng</h3>
+  <ul>
+    <li>Thu thập ý kiến, nguyện vọng, đề xuất của quân nhân.</li>
+    <li>Lắng nghe, phân loại vấn đề cần giải quyết gấp, trung hạn, dài hạn.</li>
+    <li>Giải quyết các vấn đề chính đáng mà không làm mất kỷ luật.</li>
+    <li>Đảm bảo sự minh bạch, công bằng và giữ uy tín đơn vị.</li>
+  </ul>`,
+
+  3: `<h3>3. Lập báo cáo tư tưởng</h3>
+  <ul>
+    <li>Tổng hợp tình hình từ các đơn vị và cá nhân.</li>
+    <li>Phân tích các vấn đề nổi bật và mức độ ảnh hưởng đến tinh thần chiến đấu.</li>
+    <li>Lập báo cáo chi tiết kèm đề xuất giải pháp và phương án cải thiện.</li>
+    <li>Báo cáo được cập nhật định kỳ, đầy đủ và chính xác.</li>
+  </ul>`,
+
+  4: `<h3>4. Đánh giá tinh thần và thái độ</h3>
+  <ul>
+    <li>Đánh giá động lực, tinh thần, thái độ làm việc của từng quân nhân.</li>
+    <li>Xác định nhân tố ảnh hưởng tích cực và tiêu cực trong tập thể.</li>
+    <li>Đề xuất biện pháp khuyến khích, động viên hoặc điều chỉnh phù hợp.</li>
+    <li>Bảo đảm công bằng, khách quan, không thiên vị.</li>
+  </ul>`,
+
+  5: `<h3>5. Kế hoạch cải thiện</h3>
+  <ul>
+    <li>Thiết lập mục tiêu cải thiện theo giai đoạn ngắn hạn và dài hạn.</li>
+    <li>Đề xuất biện pháp hỗ trợ, huấn luyện, tư vấn tâm lý và giao lưu nội bộ.</li>
+    <li>Theo dõi tiến trình thực hiện và điều chỉnh phù hợp.</li>
+    <li>Mọi quân nhân được tham gia và nhận phản hồi công bằng.</li>
+  </ul>`,
+
+  6: `<h3>6. Theo dõi hiệu quả biện pháp</h3>
+  <ul>
+    <li>Đánh giá kết quả các biện pháp đã triển khai.</li>
+    <li>Ghi nhận những thay đổi về thái độ, tinh thần, động lực.</li>
+    <li>Điều chỉnh hoặc bổ sung biện pháp nếu chưa đạt hiệu quả.</li>
+    <li>Bảo đảm thông tin được ghi nhận đầy đủ và minh bạch.</li>
+  </ul>`,
+
+  7: `<h3>7. Báo cáo định kỳ</h3>
+  <ul>
+    <li>Lập báo cáo tuần/tháng về tình hình tư tưởng và thực hiện kế hoạch cải thiện.</li>
+    <li>Phân tích xu hướng, những khó khăn nổi bật và đề xuất biện pháp.</li>
+    <li>Đảm bảo báo cáo chính xác, kịp thời cho chỉ huy đơn vị.</li>
+    <li>Định kỳ rà soát, đối chiếu với các báo cáo trước để đánh giá tiến độ.</li>
+  </ul>`,
+
+  8: `<h3>8. Đánh giá tổng thể và rút kinh nghiệm</h3>
+  <ul>
+    <li>Đánh giá toàn bộ hiệu quả quản lý tư tưởng trong đơn vị.</li>
+    <li>Xác định những mặt làm tốt và các hạn chế cần khắc phục.</li>
+    <li>Lập kế hoạch rút kinh nghiệm, nâng cao tinh thần, kỷ luật và hiệu quả chiến đấu.</li>
+    <li>Chia sẻ kinh nghiệm với các đơn vị khác và cải thiện công tác quản lý tư tưởng.</li>
+  </ul>`
+};
+
+function showLesson(num){
+  document.getElementById('lesson-content').innerHTML = lessons[num];
+}
+</script>
+
+</body>
+</html>

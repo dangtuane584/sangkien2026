@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học tập</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;padding:20px;}
+#background{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:url('background.jpg') no-repeat center center fixed;
+  background-size:cover;z-index:-1;
+}
+header{
+  background:rgba(255,255,255,.9);
+  padding:15px;text-align:center;
+  position:fixed;top:0;width:100%;z-index:1000;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+}
+header h1{color:#007bff;margin-bottom:10px;}
+header button{
+  margin:3px;padding:8px 12px;border:none;
+  border-radius:8px;cursor:pointer;
+  background:#1e3c72;color:#fff;
+}
+section{max-width:900px;margin:120px auto 40px;}
+.card{
+  background:rgba(255,255,255,.65);
+  padding:25px;margin:20px 0;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,.3);
+}
+.grid-lessons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-top:15px;
+}
+.square-lesson{
+  background:rgba(255,255,255,.85);
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  transition:.3s;
+}
+.square-lesson:hover{transform:translateY(-5px);}
+.square-lesson a{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+.icon{font-size:2rem;margin-bottom:8px;}
+.editable[contenteditable="true"]{
+  outline:2px dashed red;
+  background:#fff8c6;
+}
+@media(max-width:600px){
+  .grid-lessons{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div id="background"></div>
+
+<header>
+  <h1 class="editable" data-key="title-main">Học tập</h1>
+  <button onclick="adminLogin()">🔐 Quản trị</button>
+  <button id="editBtn" onclick="toggleEdit()" style="display:none">✏️ Chỉnh sửa</button>
+  <button id="saveBtn" onclick="saveContent()" style="display:none">💾 Lưu</button>
+  <button id="logoutBtn" onclick="logoutAdmin()" style="display:none">🚪 Thoát</button>
+  <button id="videoBtn" onclick="changeVideo()" style="display:none">🎬 Đổi video</button>
+</header>
+
+<section>
+
+<!-- GIÁO DỤC CHÍNH TRỊ -->
+<div class="card">
+   <div class="grid-lessons">
+    <div class="square-lesson"><a href="gdct-co-ban.html"><div class="icon">📚</div><p>GDCT cơ bản</p></a></div>
+    <div class="square-lesson"><a href="pho-bien-gdpl.html"><div class="icon">📖</div><p>Phổ biến GDPL</p></a></div>
+    <div class="square-lesson"><a href="nam-quan-ly-tu-tuong.html"><div class="icon">🧠</div><p>Nắm quản lý tư tưởng</p></a></div>
+    <div class="square-lesson"><a href="thong-tin-tuyen-truyen.html"><div class="icon">📰</div><p>Thông tin tuyên truyền</p></a></div>
+    <div class="square-lesson"><a href="van-ban-huong-dan.html"><div class="icon">📄</div><p>Văn bản hướng dẫn</p></a></div>
+    <div class="square-lesson"><a href="binh-dan-hoc-vu.html"><div class="icon">📝</div><p>Bình dân học vụ số</p></a></div>
+  </div>
+</div>
+
+<!-- BÀI KIỂM TRA -->
+<div class="card">
+  <a href="bai-kiem-tra.html" style="text-decoration:none;color:inherit">
+    <h2 class="editable" data-key="test-title">📝 Bài kiểm tra</h2>
+  </a>
+</div>
+
+<!-- NGHỊ QUYẾT -->
+<div class="card" onclick="openBaoCao()" style="cursor:pointer">
+  <h2 class="editable" data-key="baocao-title">📊 Nghị quyết lãnh đạo</h2>
+  <p class="editable" data-key="baocao-text">Khu vực bảo mật</p>
+</div>
+
+<!-- BẢO TÀNG -->
+<div class="card">
+  <h2 class="editable" data-key="museum-title">🏛️ Tham quan Bảo tàng Quân sự</h2>
+  <a target="_blank" href="https://vr360.yoolife.vn/bao-tang-lich-su-quan-su-viet-nam-zmuseumc118u26724">
+     👉 Nhấn để tham quan
+  </a>
+</div>
+
+<!-- Ê ĐÊ + Video -->
+<div class="card">
+  <h2 class="editable" data-key="ede-title">🗣️ Học tiếng Ê Đê</h2>
+  <div class="grid-lessons">
+    <div class="square-lesson">
+      <a href="hoc-tieng-ede.html">
+        <div class="icon">📝</div>
+        <p class="editable" data-key="ede-text">Học tiếng Ê Đê</p>
+      </a>
+    </div>
+    <div class="square-lesson">
+      <a href="#" onclick="openVideo()">
+        <div class="icon">🎬</div>
+        <p class="editable" data-key="ede-video-text">Video bài học</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<script>
+const ADMIN_PASSWORD = "303";
+let isAdmin = false;
+
+// Đường dẫn Web App Google Sheets (dán URL của bạn vào đây)
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbzseksxyw-UnISzfDK4IMxKD53VZALMwIie2FHFgHrLFmnm3_91uYTFRA-3AYnOIJQV/exec";
+
+// Link video YouTube bình thường
+let videoURL = localStorage.getItem("ede-video-url") || "https://www.youtube.com/watch?v=idDHxFZ2_So&t=14s";
+
+// --- QUẢN TRỊ ---
+function adminLogin(){
+  const pass = prompt("Nhập mật khẩu quản trị:");
+  if(pass === ADMIN_PASSWORD){
+    isAdmin = true;
+    editBtn.style.display = saveBtn.style.display = logoutBtn.style.display = videoBtn.style.display = "inline-block";
+    alert("✅ Chế độ quản trị bật");
+  }
+}
+
+// Chỉnh sửa nội dung
+function toggleEdit(){
+  if(!isAdmin) return;
+  document.querySelectorAll(".editable").forEach(el=>{
+    el.contentEditable = el.contentEditable !== "true";
+  });
+}
+
+// Lưu nội dung lên Google Sheet
+async function saveContent(){
+  if(!isAdmin) return;
+  const payload = {};
+  document.querySelectorAll(".editable").forEach(el=>{
+    payload[el.dataset.key] = el.innerHTML;
+  });
+  try {
+    await fetch(SHEET_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    alert("💾 Đã lưu nội dung cho tất cả mọi người!");
+  } catch(err){
+    alert("❌ Lưu thất bại: " + err);
+  }
+}
+
+// Load nội dung từ Google Sheet
+async function loadContent(){
+  try {
+    const res = await fetch(SHEET_URL);
+    const data = await res.json();
+    document.querySelectorAll(".editable").forEach(el=>{
+      if(data[el.dataset.key]) el.innerHTML = data[el.dataset.key] || data[el.dataset.key];
+    });
+  } catch(err){
+    console.log("Không thể load nội dung:", err);
+  }
+}
+
+// Logout
+function logoutAdmin(){
+  isAdmin = false;
+  document.querySelectorAll(".editable").forEach(el=>el.contentEditable=false);
+  editBtn.style.display = saveBtn.style.display = logoutBtn.style.display = videoBtn.style.display = "none";
+}
+
+// Mở báo cáo
+function openBaoCao(){
+  const pass = prompt("Nhập mật khẩu:");
+  if(pass === ADMIN_PASSWORD) location.href="bao-cao-cap-tren.html";
+  else if(pass) alert("❌ Sai mật khẩu");
+}
+
+// Mở video trực tiếp
+function openVideo(){
+  window.open(videoURL, "_blank");
+}
+
+// Thay đổi video (admin)
+function changeVideo(){
+  if(!isAdmin) return alert("❌ Không có quyền");
+  const url = prompt("Dán link YouTube bình thường:", videoURL);
+  if(url){
+    videoURL = url;
+    localStorage.setItem("ede-video-url", videoURL);
+    alert("✅ Đã cập nhật video");
+  }
+}
+
+// Load nội dung khi mở trang
+window.onload = loadContent;
+</script>
+
+</body>
+</html>

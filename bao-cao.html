@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo cáo & Tổng hợp </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; background:#f0f8ff; padding:20px;}
+header {
+  background: rgba(255,255,255,0.85);
+  text-align: center;
+  padding:25px;
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(5px);
+}
+header h1 {color:#007BFF; font-size:2rem;}
+section {max-width:900px; margin:30px auto;}
+button.back {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:20px;}
+button.back:hover {background:#2a5298; transform:translateY(-2px);}
+.report-item {
+  background: rgba(255,255,255,0.7);
+  border-radius:10px;
+  margin-bottom:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.report-header {
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+  padding:15px 20px;
+  font-weight:bold;
+  color:#1e3c72;
+}
+.report-header:hover {background: rgba(0,123,255,0.1);}
+.report-header span {margin-left:10px; font-size:1.2rem;}
+.report-content {
+  padding:0 20px 15px 20px;
+  display:none;
+  line-height:1.6;
+}
+.report-content ul {margin-top:10px; padding-left:20px;}
+.report-content ul li {margin-bottom:5px;}
+@media(max-width:600px){section{padding:0 10px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Báo cáo & Tổng hợp </h1>
+</header>
+
+<section>
+<a href="pho-bien-gdpl.html"><button class="back">⏪ Quay lại</button></a>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    1. Nguyên tắc lập báo cáo <span>📄</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Chính xác, trung thực, đầy đủ thông tin.</li>
+      <li>Minh bạch, dễ kiểm tra, tránh sai sót hoặc bỏ sót dữ liệu.</li>
+      <li>Tuân thủ mẫu báo cáo chuẩn.</li>
+      <li>Bảo mật thông tin theo quy định.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    2. Phân loại báo cáo <span>📊</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Báo cáo định kỳ: ngày, tuần, tháng, quý, năm.</li>
+      <li>Báo cáo đột xuất: sự kiện bất thường hoặc vi phạm.</li>
+      <li>Báo cáo chuyên đề: huấn luyện, trang thiết bị, kỷ luật, tài chính.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    3. Nội dung báo cáo <span>📝</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Thông tin chung về đơn vị, cá nhân, thời gian, địa điểm.</li>
+      <li>Tổng hợp kết quả thanh tra, kiểm tra, huấn luyện, trực ban, bảo quản trang thiết bị.</li>
+      <li>Đánh giá vi phạm kỷ luật, hiệu quả công việc.</li>
+      <li>Đề xuất biện pháp cải tiến và khắc phục.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    4. Mẫu báo cáo và biểu mẫu <span>📑</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Biên bản thanh tra/kiểm tra.</li>
+      <li>Báo cáo tổng hợp tuần/tháng/quý/năm.</li>
+      <li>Báo cáo đột xuất khi có sự kiện bất thường.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    5. Trách nhiệm người lập báo cáo <span>👨‍✈️</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Thu thập dữ liệu chính xác và đầy đủ.</li>
+      <li>Phân tích thông tin để đánh giá khách quan.</li>
+      <li>Trình bày báo cáo rõ ràng, logic.</li>
+      <li>Lưu trữ hồ sơ đúng quy định.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    6. Quy trình tổng hợp số liệu <span>📈</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Thu thập dữ liệu từ phòng ban, tiểu đội và cá nhân.</li>
+      <li>Kiểm tra, đối chiếu số liệu đảm bảo chính xác.</li>
+      <li>Tổng hợp theo biểu mẫu chuẩn.</li>
+      <li>Đưa ra bảng thống kê, biểu đồ, hoặc nhận xét.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    7. Đánh giá kết quả <span>✅</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>So sánh với mục tiêu, kế hoạch đã đề ra.</li>
+      <li>Nhận định điểm mạnh, hạn chế, tồn tại.</li>
+      <li>Đề xuất biện pháp cải tiến, nâng cao hiệu quả.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    8. Xử lý và trình duyệt báo cáo <span>📋</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Báo cáo gửi lên cấp trên để phê duyệt.</li>
+      <li>Chỉ khi phê duyệt, báo cáo mới lưu chính thức.</li>
+      <li>Thông tin cần khắc phục được phân công rõ trách nhiệm.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    9. Lưu trữ hồ sơ báo cáo <span>📂</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Hồ sơ báo cáo được lưu trữ theo thời gian quy định.</li>
+      <li>Bảo quản an toàn, dễ truy xuất.</li>
+      <li>Lưu trữ theo loại báo cáo, tuần tự theo thời gian.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="report-item">
+  <div class="report-header" onclick="toggleContent(this)">
+    10. Giám sát sau báo cáo <span>🔍</span>
+  </div>
+  <div class="report-content">
+    <ul>
+      <li>Kiểm tra việc thực hiện đề xuất và khắc phục vi phạm.</li>
+      <li>Đảm bảo biện pháp triển khai đúng kế hoạch.</li>
+      <li>Đánh giá lại kết quả trong báo cáo tiếp theo.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleContent(header){
+  const content = header.nextElementSibling;
+  if(content.style.display === "block"){
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+    content.scrollIntoView({behavior:"smooth"});
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tình huống pháp luật </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+  font-family: Arial, sans-serif;
+  padding:20px;
+  background:#f0f8ff;
+}
+header {
+  background: rgba(255,255,255,0.8);
+  padding:20px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  backdrop-filter: blur(5px);
+}
+header h1 {
+  color:#007BFF;
+  font-size:1.7rem;
+}
+section {
+  max-width:750px;
+  margin:30px auto;
+}
+.grid-lessons {
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+}
+.lesson-box {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border-radius:15px;
+  padding:15px;
+  cursor:pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.lesson-box:hover {
+  transform: translateY(-2px);
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+.lesson-header {
+  display:flex;
+  align-items:center;
+}
+.lesson-number {
+  font-size:1.2rem;
+  font-weight:bold;
+  margin-right:10px;
+  width:25px;
+  text-align:center;
+}
+.icon {
+  font-size:2rem;
+  margin-right:10px;
+  color:#FF6347;
+}
+.lesson-title {
+  font-weight:bold;
+}
+.lesson-content {
+  display:none;
+  margin-top:10px;
+  padding:10px;
+  background: rgba(255,255,255,0.8);
+  border-radius:8px;
+  line-height:1.5;
+}
+button {
+  background:#1e3c72;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px 15px;
+  cursor:pointer;
+  margin-bottom:15px;
+}
+button:hover {
+  background:#2a5298;
+  transform:translateY(-2px);
+}
+@media(max-width:500px){
+  .icon{font-size:1.5rem;}
+  .lesson-number{font-size:1rem;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tình huống pháp luật </h1>
+</header>
+
+<section>
+  <a href="pho-bien-gdpl.html">
+    <button>⏪ Quay lại</button>
+  </a>
+
+  <div class="grid-lessons">
+
+    <!-- Tình huống 1 -->
+    <div class="lesson-box" onclick="toggleContent(this, 1)">
+      <div class="lesson-header">
+        <div class="lesson-number">1</div>
+        <div class="icon">⚠️</div>
+        <div class="lesson-title">Vi phạm giờ giấc trực ban</div>
+      </div>
+      <div class="lesson-content" id="content-1">
+        <p>Nếu quân nhân rời vị trí trực ban không có phép, sẽ bị nhắc nhở hoặc kỷ luật tùy mức độ. Tuân thủ giờ giấc là nghĩa vụ bắt buộc.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 2 -->
+    <div class="lesson-box" onclick="toggleContent(this, 2)">
+      <div class="lesson-header">
+        <div class="lesson-number">2</div>
+        <div class="icon">📜</div>
+        <div class="lesson-title">Không thực hiện mệnh lệnh cấp trên</div>
+      </div>
+      <div class="lesson-content" id="content-2">
+        <p>Không chấp hành mệnh lệnh là vi phạm kỷ luật nghiêm trọng, có thể bị cảnh cáo hoặc xử lý hình thức kỷ luật cao hơn.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 3 -->
+    <div class="lesson-box" onclick="toggleContent(this, 3)">
+      <div class="lesson-header">
+        <div class="lesson-number">3</div>
+        <div class="icon">🛡️</div>
+        <div class="lesson-title">Sử dụng trang thiết bị sai mục đích</div>
+      </div>
+      <div class="lesson-content" id="content-3">
+        <p>Sử dụng trang thiết bị quân sự cho mục đích cá nhân là vi phạm nội quy, phải báo cáo, kiểm điểm và bồi thường thiệt hại nếu có.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 4 -->
+    <div class="lesson-box" onclick="toggleContent(this, 4)">
+      <div class="lesson-header">
+        <div class="lesson-number">4</div>
+        <div class="icon">📝</div>
+        <div class="lesson-title">Không hoàn thành nhiệm vụ huấn luyện</div>
+      </div>
+      <div class="lesson-content" id="content-4">
+        <p>Vi phạm nghĩa vụ huấn luyện sẽ bị nhắc nhở, kiểm điểm, và có thể ảnh hưởng đến đánh giá cuối khóa.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 5 -->
+    <div class="lesson-box" onclick="toggleContent(this, 5)">
+      <div class="lesson-header">
+        <div class="lesson-number">5</div>
+        <div class="icon">📢</div>
+        <div class="lesson-title">Báo cáo thông tin không chính xác</div>
+      </div>
+      <div class="lesson-content" id="content-5">
+        <p>Báo cáo sai sự thật có thể gây ảnh hưởng tới công tác của đơn vị, phải sửa lỗi và chịu hình thức kỷ luật phù hợp.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 6 -->
+    <div class="lesson-box" onclick="toggleContent(this, 6)">
+      <div class="lesson-header">
+        <div class="lesson-number">6</div>
+        <div class="icon">🔒</div>
+        <div class="lesson-title">Tiết lộ thông tin nội bộ</div>
+      </div>
+      <div class="lesson-content" id="content-6">
+        <p>Tiết lộ bí mật quân sự hoặc thông tin nội bộ là vi phạm nghiêm trọng, có thể bị xử lý theo quy định pháp luật và kỷ luật quân đội.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 7 -->
+    <div class="lesson-box" onclick="toggleContent(this, 7)">
+      <div class="lesson-header">
+        <div class="lesson-number">7</div>
+        <div class="icon">⚡</div>
+        <div class="lesson-title">Xung đột với đồng đội</div>
+      </div>
+      <div class="lesson-content" id="content-7">
+        <p>Phải giải quyết xung đột bằng kỷ luật, báo cáo chỉ huy nếu cần, tránh ảnh hưởng đến tập thể và trật tự đơn vị.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 8 -->
+    <div class="lesson-box" onclick="toggleContent(this, 8)">
+      <div class="lesson-header">
+        <div class="lesson-number">8</div>
+        <div class="icon">💣</div>
+        <div class="lesson-title">Hư hỏng vũ khí, trang thiết bị</div>
+      </div>
+      <div class="lesson-content" id="content-8">
+        <p>Phải báo cáo ngay và khắc phục. Nếu hư hỏng do lỗi chủ quan, quân nhân có thể bị xử lý và bồi thường.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 9 -->
+    <div class="lesson-box" onclick="toggleContent(this, 9)">
+      <div class="lesson-header">
+        <div class="lesson-number">9</div>
+        <div class="icon">🕵️‍♂️</div>
+        <div class="lesson-title">Phát hiện vi phạm pháp luật trong đơn vị</div>
+      </div>
+      <div class="lesson-content" id="content-9">
+        <p>Phải báo cáo cấp trên hoặc cơ quan có thẩm quyền, phối hợp điều tra, không được che giấu hay dung túng.</p>
+      </div>
+    </div>
+
+    <!-- Tình huống 10 -->
+    <div class="lesson-box" onclick="toggleContent(this, 10)">
+      <div class="lesson-header">
+        <div class="lesson-number">10</div>
+        <div class="icon">💡</div>
+        <div class="lesson-title">Đề xuất cải tiến hoạt động đơn vị</div>
+      </div>
+      <div class="lesson-content" id="content-10">
+        <p>Quân nhân có quyền đề xuất sáng kiến, cải tiến phương pháp làm việc. Sáng kiến được xem xét công bằng và khuyến khích tinh thần sáng tạo.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function toggleContent(box, num){
+  const content = box.querySelector(`#content-${num}`);
+  const isVisible = content.style.display === "block";
+  // Ẩn tất cả nội dung
+  document.querySelectorAll('.lesson-content').forEach(c => c.style.display = 'none');
+  // Mở mục hiện tại nếu chưa mở
+  if(!isVisible){
+    content.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>

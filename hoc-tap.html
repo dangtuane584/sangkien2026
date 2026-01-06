@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đăng nhập học tập nghị quyết</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0b3c5d,#1e90ff);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.login-box{
+  background:#fff;
+  width:320px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+h2{
+  text-align:center;
+  color:#003366;
+  margin-bottom:20px;
+}
+input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#003366;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+button:hover{background:#0055aa;}
+#msg{
+  margin-top:10px;
+  text-align:center;
+  color:red;
+}
+</style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>Học tập nghị quyết</h2>
+  <input id="user" placeholder="Tài khoản">
+  <input id="pass" type="password" placeholder="Mật khẩu">
+  <button onclick="login()">Đăng nhập</button>
+  <div id="msg"></div>
+</div>
+
+<script>
+function login(){
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  // 🔐 TÀI KHOẢN MẪU (bạn có thể đổi)
+  if(u === "canbo" && p === "20242025"){
+    localStorage.setItem("hocTapDangNhap","ok");
+    window.location.href = "noidung-hoc.html";
+  }else{
+    document.getElementById("msg").innerText = "Sai tài khoản hoặc mật khẩu!";
+  }
+}
+</script>
+
+</body>
+</html>

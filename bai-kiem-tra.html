@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài kiểm tra</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background: #f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#1e3c72; font-size:1.7rem;}
+section {max-width:900px; margin:30px auto;}
+.card {background: rgba(255,255,255,0.6); padding:15px; border-radius:15px; margin:15px 0; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+.card h3 {margin-bottom:10px; color:#1e3c72;}
+.card label {display:block; margin:5px 0; cursor:pointer;}
+.card label input {margin-right:5px;}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin:15px 0; font-size:0.9em; transition:0.3s;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+.result {margin-top:20px; font-weight:bold; font-size:1.2em; color:#007BFF;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bài kiểm tra</h1>
+</header>
+
+<section>
+<!-- Nút quay lại sử dụng button và JS -->
+<button onclick="location.href='noidung-hoc.html'">⏪ Quay lại</button>
+
+<div id="quiz-container"></div>
+
+<button onclick="showResult()">Xem kết quả</button>
+<p class="result" id="final-result"></p>
+
+</section>
+
+<script>
+// Số lượng câu hỏi
+const totalQuestions = 30;
+const quizContainer = document.getElementById('quiz-container');
+
+// Nội dung câu hỏi
+const quizData = [
+  {q:"Bản chất Quân đội ND Việt Nam?", options:["Giai cấp công nhân","Tư nhân","Không rõ","Tất cả sai"], answer:"A"},
+  {q:"Vai trò kỷ luật quân đội?", options:["Là sức mạnh của quân đội","Không quan trọng","Không cần thiết","Không liên quan"], answer:"A"},
+  {q:"Trách nhiệm quân nhân khi thực hiện nhiệm vụ?", options:["Trung thành, kỷ luật","Tùy tiện","Không quan tâm","Bỏ mặc"], answer:"A"},
+  {q:"Phẩm chất Bộ đội Cụ Hồ gồm?", options:["Cần, kiệm, liêm, chính","Xa rời dân","Không đoàn kết","Tất cả sai"], answer:"A"},
+  {q:"Văn hóa giao tiếp trong đơn vị?", options:["Lịch sự, tôn trọng","Bất lịch sự","Không quan tâm","Tất cả sai"], answer:"A"},
+  {q:"Xử lý tình huống khẩn cấp?", options:["Phân tích, quyết định đúng","Hành động tùy tiện","Không làm gì","Bỏ qua"], answer:"A"},
+  {q:"Phẩm chất chính trị trong đơn vị?", options:["Vững vàng, trung thành","Không quan tâm","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Kỹ năng lãnh đạo trong đơn vị?", options:["Phát triển và tổ chức tốt","Không quan tâm","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Thực hành kỷ luật và kỹ năng quân sự?", options:["Thực hành đúng","Sai","Không quan tâm","Tất cả sai"], answer:"A"},
+  {q:"Tổng kết kiến thức và rút kinh nghiệm?", options:["Đúng","Sai","Bỏ qua","Tất cả sai"], answer:"A"},
+  {q:"Nắm vững nội quy, quy định?", options:["Hiểu và tuân thủ","Không quan tâm","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Thái độ với đồng đội?", options:["Hợp tác, giúp đỡ","Ganh ghét, chống đối","Bỏ mặc","Không quan tâm"], answer:"A"},
+  {q:"Thái độ với cấp trên?", options:["Tôn trọng, chấp hành","Không quan tâm","Phản kháng","Bỏ qua"], answer:"A"},
+  {q:"Thái độ với nhân dân?", options:["Gần gũi, tôn trọng","Xa lánh","Không quan tâm","Bỏ qua"], answer:"A"},
+  {q:"Tuân thủ pháp luật?", options:["Nghiêm chỉnh chấp hành","Không tuân thủ","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Cách bảo vệ trang thiết bị?", options:["Bảo quản đúng cách","Vứt bỏ tùy tiện","Không quan tâm","Hỏng hóc"], answer:"A"},
+  {q:"Quản lý thời gian cá nhân?", options:["Sắp xếp hợp lý","Lãng phí","Không quan tâm","Bỏ qua"], answer:"A"},
+  {q:"Phương pháp học tập hiệu quả?", options:["Lập kế hoạch, ôn luyện","Ngẫu hứng","Không học","Bỏ qua"], answer:"A"},
+  {q:"Tinh thần đồng đội?", options:["Đoàn kết, giúp nhau","Ganh ghét","Cạnh tranh thái quá","Bỏ mặc"], answer:"A"},
+  {q:"Kỹ năng tác chiến cá nhân?", options:["Thành thạo, chính xác","Làm qua loa","Không thực hiện","Sai hết"], answer:"A"},
+  {q:"Kỹ năng sơ cứu cơ bản?", options:["Hiểu và thực hành","Không biết","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Kỹ năng sử dụng vũ khí?", options:["An toàn và chính xác","Bừa bãi","Không sử dụng","Sai hết"], answer:"A"},
+  {q:"Kỹ năng thông tin liên lạc?", options:["Đúng quy trình","Sai cách","Bỏ qua","Không quan tâm"], answer:"A"},
+  {q:"Phương pháp báo cáo tình huống?", options:["Rõ ràng, đúng","Sai lệch","Không báo cáo","Bỏ qua"], answer:"A"},
+  {q:"Kỹ năng dẫn đường và định vị?", options:["Chính xác, hiệu quả","Sai đường","Bỏ qua","Không quan tâm"], answer:"A"},
+  {q:"Hiểu rõ nhiệm vụ chiến đấu?", options:["Nắm vững","Không quan tâm","Bỏ qua","Sai hết"], answer:"A"},
+  {q:"Kỹ năng điều phối nhóm?", options:["Hiệu quả","Sai cách","Không điều phối","Bỏ qua"], answer:"A"},
+  {q:"Tinh thần tự giác?", options:["Tự giác cao","Lười biếng","Không quan tâm","Sai hết"], answer:"A"},
+  {q:"Động lực học tập?", options:["Cao, cố gắng","Thờ ơ","Bỏ qua","Không quan tâm"], answer:"A"},
+  {q:"Ý thức trách nhiệm cộng đồng?", options:["Cao, tích cực","Bỏ qua","Không quan tâm","Sai hết"], answer:"A"}
+];
+
+// Tạo giao diện quiz
+for(let i=0;i<totalQuestions;i++){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <h3>Câu ${i+1}: ${quizData[i].q}</h3>
+    <label><input type="radio" name="q${i+1}" value="A" onclick="checkAnswer(${i+1},'A')">A. ${quizData[i].options[0]}</label>
+    <label><input type="radio" name="q${i+1}" value="B" onclick="checkAnswer(${i+1},'B')">B. ${quizData[i].options[1]}</label>
+    <label><input type="radio" name="q${i+1}" value="C" onclick="checkAnswer(${i+1},'C')">C. ${quizData[i].options[2]}</label>
+    <label><input type="radio" name="q${i+1}" value="D" onclick="checkAnswer(${i+1},'D')">D. ${quizData[i].options[3]}</label>
+    <p id="feedback${i+1}"></p>
+  `;
+  quizContainer.appendChild(card);
+}
+
+// Lưu đáp án
+const answers = {};
+for(let i=0;i<totalQuestions;i++){
+  answers[i+1] = quizData[i].answer;
+}
+
+let userAnswers = {};
+
+// Kiểm tra đáp án khi chọn
+function checkAnswer(qNum, choice){
+  userAnswers[qNum] = choice;
+  const feedback = (choice === answers[qNum]) ? "Đúng ✔️" : "Sai ❌";
+  document.getElementById('feedback'+qNum).innerText = feedback;
+}
+
+// Hiển thị kết quả
+function showResult(){
+  let correct = 0;
+  for(let i=1;i<=totalQuestions;i++){
+    if(userAnswers[i] === answers[i]) correct++;
+  }
+  document.getElementById('final-result').innerText = `Bạn trả lời đúng ${correct}/30 câu.`;
+}
+</script>
+
+</body>
+</html>

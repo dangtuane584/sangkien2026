@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trang Thông Tin Đơn Vị và Đăng Ký Thăm</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
+/* Nền trang */
+#background {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #000;
+}
+
+/* Header */
+header {
+  background: rgba(255,255,255,0.8);
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  color: #000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+header h1 {
+    font-size: 1.7rem;       
+    margin-bottom: 10px;
+    color: #007BFF;        
+}
+
+/* Container cố định cho nút */
+.button-container {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2000;
+}
+
+/* Nút */
+.login-btn {
+  width: 150px;
+  height: 50px;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+.login-btn:hover {
+  background: #0055aa;
+  transform: translateY(-2px);
+}
+
+/* Section chính */
+section {
+  max-width: 900px;
+  margin: 100px auto 30px;
+  padding: 10px;
+}
+.card {
+  background: rgba(0, 33, 33, 0.4);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+.card:hover {transform: translateY(-5px);}
+#gth h2,
+#anh h2,
+#qd h2 {
+  color: #F5F5DC;
+}
+p, ul {line-height:1.6; color: #fff;}
+ul li {margin-bottom:8px;}
+iframe {border-radius: 12px; width: 100%; height: 315px;}
+.image-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+.image-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image-item img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 150px;
+}
+.image-item p {
+  margin-top: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Form đăng ký */
+.container {
+  max-width: 600px;
+  margin: 50px auto 50px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(173, 216, 230, 0.8));
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  color: #000;
+  border: 2px solid #1e90ff;
+}
+.container h2 {text-align:center; margin-bottom:25px; color:#003366;}
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #003366;
+}
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 2px solid #1e90ff;
+  background: rgba(255,255,255,0.7);
+  color: #000;
+  transition: all 0.3s ease;
+}
+input::placeholder {color: #555;}
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff4500;
+  background: rgba(255,255,255,0.9);
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4500;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+button[type="submit"]:hover {
+  background: #ff6347;
+  transform: translateY(-2px);
+}
+#status {text-align:center; margin-top:15px; font-weight:bold; color:#ff4500;}
+
+/* CARD TRANG TUYÊN TRUYỀN CHIA 2 Ô */
+.card-split {
+  display: flex;
+  padding: 0;
+}
+.card-split .card-half {
+  flex: 1;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.card-split .card-half:hover {
+  background: rgba(255,255,255,0.15);
+}
+.card-split .left {
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Media queries */
+@media(max-width:600px){
+  header h1 {font-size:1.4rem;}
+  .card {padding:15px; margin:15px 10px;}
+  iframe {height:200px;}
+  .image-item {width:48%; margin-bottom:10px;}
+  .container {padding:20px; margin:80px 10px;}
+  input, select {padding:10px;}
+  button[type="submit"] {padding:12px; font-size:14px;}
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .login-btn {
+    width: 45%;
+    height: 45px;
+    font-size: 0.9rem;
+  }
+  header {padding-bottom: 70px;}
+}
+
+@media (max-width: 600px) {
+  .card-split {flex-direction: column;}
+  .card-split .left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="background"></div>
+
+<header>
+<h1>TRUNG ĐOÀN 584, QUÂN KHU 5</h1>
+
+<div class="button-container">
+  <button class="login-btn" onclick="window.location.href='login.html'">Đăng nhập</button>
+  <button class="login-btn" onclick="window.location.href='hoc-tap.html'">Học tập</button>
+</div>
+</header>
+
+<section>
+  <div class="card" id="gth">
+    <h2>Giới thiệu</h2>
+    <p>Trung đoàn 584 (Đắk Lắk) là một đơn vị thuộc lực lượng vũ trang Quân khu 5, đóng quân và hoạt động trên địa bàn tỉnh Đắk Lắk. Đơn vị có nhiệm vụ huấn luyện, sẵn sàng chiến đấu, tham gia xây dựng nền quốc phòng toàn dân, giữ gìn an ninh – trật tự, đồng thời giúp dân phòng chống thiên tai, phát triển kinh tế – xã hội tại địa phương. Đơn vị luôn chú trọng rèn luyện kỷ luật, nâng cao chất lượng huấn luyện và xây dựng đơn vị vững mạnh toàn diện.</p>
+  </div>
+
+  <div class="card card-split">
+    <div class="card-half left" onclick="window.open('https://www.facebook.com/LLVTtinhdaklak','_blank')">
+      📢 Trang tuyên truyền<br>Đơn vị
+    </div>
+    <div class="card-half right" onclick="window.open('https://www.facebook.com/profile.php?id=100057500317186','_blank')">
+      📘 Fanpage Facebook<br>QK5
+    </div>
+  </div>
+
+  <div class="card" id="tintuc">
+    <h2>Tin tức đơn vị</h2>
+    <ul>
+      <li><a href="https://www.qdnd.vn/quoc-phong-an-ninh/xay-dung-quan-doi/trung-doan-584-san-sang-don-nhan-chien-si-moi-815212" target="_blank" style="color:#F5F5DC;text-decoration:underline;">Trung đoàn 584 sẵn sàng đón nhận chiến sĩ mới 2025</a></li>
+      <li><a href="https://ttthlak.gov.vn/tin-tuc/tieu-doan-303-trung-doan-bo-binh-584-bo-chi-huy-quan-su-tinh-to-chuc-le-tuyen-the-chien-si-moi-nam-2025" target="_blank" style="color:#F5F5DC;text-decoration:underline;">Tiểu đoàn 303, Trung đoàn Bộ binh 584 tổ chức lễ tuyên thệ chiến sĩ mới năm 2025</a></li>
+      <li><a href="https://baodaklak.vn/an-ninh-quoc-phong/202503/trung-doan-584-ra-quan-huan-luyen-nam-2025-bd00c34/" target="_blank" style="color:#F5F5DC;text-decoration:underline;">Trung đoàn 584 ra quân huấn luyện năm 2025</a></li>
+    </ul>
+  </div>
+
+  <div class="card" id="anh">
+    <h2>Ảnh Đơn Vị</h2>
+    <div class="image-row">
+      <div class="image-item"><img src="anh1.jpg" alt="Ảnh 1"><p>Sắp đặt NVVS</p></div>
+      <div class="image-item"><img src="anh2.jpg" alt="Ảnh 2"><p>Hoạt động VHVN</p></div>
+      <div class="image-item"><img src="anh3.jpg" alt="Ảnh 3"><p>Vườn rau xanh đơn vị</p></div>
+      <div class="image-item"><img src="anh4.jpg" alt="Ảnh 4"><p>Tăng gia sản xuất</p></div>
+      <div class="image-item"><img src="anh5.jpg" alt="Ảnh 5"><p>Huấn luyện điều lệnh</p></div>
+      <div class="image-item"><img src="anh6.jpg" alt="Ảnh 6"><p>Hành quân dã ngoại</p></div>
+    </div>
+  </div>
+
+  <div class="card" id="qd">
+    <h2>Quy định thăm gặp</h2>
+    <ul>
+      <li>Mang CCCD/định danh hợp lệ.</li>
+      <li>Tuân thủ hướng dẫn của cán bộ trực.</li>
+      <li>Không chụp ảnh tại khu vực cấm.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Video giới thiệu</h2>
+    <video width="100%" height="314" controls>
+      <source src="video.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </div>
+</section>
+
+<div class="container">
+<h2>Đăng ký vào thăm quân nhân</h2>
+<form id="visitForm">
+  <label>Họ tên khách:</label>
+  <input type="text" id="hoten" placeholder="Nhập họ tên" required />
+  <label>Số CCCD:</label>
+  <input type="text" id="cccd" placeholder="Nhập CCCD" required />
+  <label>Mối quan hệ:</label>
+  <input type="text" id="quanhe" placeholder="Nhập quan hệ" required />
+  <label>Số lượng người lên thăm:</label>
+  <input type="number" id="soluong" placeholder="Nhập số lượng" required min="1" />
+  <label>Phương tiện:</label>
+  <input type="text" id="phuongtien" placeholder="Phương tiện" required />
+  <label>Tên quân nhân muốn thăm:</label>
+  <input type="text" id="quannhan" placeholder="Nhập tên quân nhân" required />
+  <label>Số điện thoại:</label>
+  <input type="text" id="sdt" placeholder="Nhập số điện thoại" required />
+  <label for="tinhthanh">Tỉnh/Thành phố:</label>
+  <input type="text" id="tinhthanh" name="tinhthanh" placeholder="Nhập tỉnh/thành" required>
+  <label>Đơn vị:</label>
+  <input type="text" id="donvi" placeholder="Nhập đơn vị" required />
+  <button type="submit">Gửi đăng ký</button>
+</form>
+<p id="status"></p>
+</div>
+
+<script>
+document.getElementById("visitForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const statusEl = document.getElementById("status");
+
+  const data = {
+    hoten: document.getElementById("hoten").value,
+    cccd: document.getElementById("cccd").value,
+    quanhe: document.getElementById("quanhe").value,
+    soluong: Number(document.getElementById("soluong").value),
+    phuongtien: document.getElementById("phuongtien").value,
+    quannhan: document.getElementById("quannhan").value,
+    sdt: document.getElementById("sdt").value,
+    tinhthanhpho: document.getElementById("tinhthanh").value,
+    donvi: document.getElementById("donvi").value,
+    trangthai: "Chờ duyệt",
+    thoigian: new Date().toLocaleString()
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxIB6GQtymQkvvggOHyjcL8O48z_ha52NPXpX7G1o1LuolA1eOBHnY1eeseEeJOL2--_Q/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    statusEl.innerHTML = "Đăng ký thành công!";
+    document.getElementById("visitForm").reset();
+    setTimeout(() => { statusEl.innerHTML = ""; }, 40000);
+  })
+  .catch(err => {
+    console.error(err);
+    statusEl.innerHTML = "Gửi thất bại, vui lòng thử lại!";
+    setTimeout(() => { statusEl.innerHTML = ""; }, 40000);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GD SQQNCN - Tiểu đoàn 303</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:700px; margin:30px auto;}
+.grid-lessons {display:grid; grid-template-columns: 1fr; gap:15px;}
+.lesson-box {background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius:15px; padding:15px; display:flex; align-items:center; justify-content: space-between; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; font-size:1rem;}
+.lesson-box:hover {transform: translateY(-3px); box-shadow:0 5px 12px rgba(0,0,0,0.3);}
+.lesson-left {display:flex; align-items:center;}
+.lesson-number {font-size:1.2rem; font-weight:bold; margin-right:10px; width:25px; text-align:center;}
+.icon {font-size:2rem; margin-right:10px;}
+p {margin:0; font-weight:bold;}
+input[type="checkbox"] {transform: scale(1.3);}
+#lesson-content {background: rgba(255,255,255,0.6); padding:15px; border-radius:12px; margin-top:10px; display:none; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:15px;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+h2 {color:#1e3c72; margin-bottom:10px;}
+p, ul {margin-bottom:10px; line-height:1.6;}
+ul {margin-left:20px;}
+@media(max-width:500px){.icon{font-size:1.5rem;} .lesson-number{font-size:1rem;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Giáo dục Sĩ quan, Quân nhân chuyên nghiệp - Tiểu đoàn 303</h1>
+</header>
+
+<section>
+<a href="noidung-hoc.html"><button>⏪ Quay lại</button></a>
+
+<div class="grid-lessons">
+  <div class="lesson-box" onclick="toggleLesson()">
+    <div class="lesson-left">
+      <div class="lesson-number">1</div>
+      <div class="icon">📝</div>
+      <p>Trách nhiệm của sĩ quan, quân nhân chuyên nghiệp với bản thân, gia đình, đồng đội và đơn vị</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div id="lesson-content">
+    <h2>Nội dung bài học</h2>
+
+    <h3>I. Trách nhiệm với bản thân</h3>
+    <ul>
+      <li>Rèn luyện phẩm chất chính trị, đạo đức, sức khỏe và kỹ năng nghề nghiệp.</li>
+      <li>Tự học, nâng cao trình độ, duy trì thể lực và sức chiến đấu.</li>
+      <li>Chấp hành nghiêm quy định, kỷ luật và mệnh lệnh cấp trên.</li>
+    </ul>
+
+    <h3>II. Trách nhiệm với gia đình</h3>
+    <ul>
+      <li>Duy trì truyền thống gia đình, chăm sóc người thân, giáo dục con cái.</li>
+      <li>Gương mẫu về đạo đức, lối sống và tinh thần trách nhiệm.</li>
+    </ul>
+
+    <h3>III. Trách nhiệm với đồng đội</h3>
+    <ul>
+      <li>Hỗ trợ, giúp đỡ và chia sẻ kinh nghiệm với đồng đội.</li>
+      <li>Tăng cường tình đoàn kết, hợp tác trong huấn luyện, công tác và chiến đấu.</li>
+      <li>Bảo vệ uy tín, danh dự cá nhân và tập thể.</li>
+    </ul>
+
+    <h3>IV. Trách nhiệm với đơn vị</h3>
+    <ul>
+      <li>Chấp hành mệnh lệnh, kế hoạch công tác và nội quy đơn vị.</li>
+      <li>Đóng góp xây dựng kỷ luật, nền nếp, văn hóa đơn vị.</li>
+      <li>Thực hiện nhiệm vụ được giao hiệu quả, an toàn và đúng chất lượng.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleLesson() {
+  const content = document.getElementById('lesson-content');
+  content.style.display = (content.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
